@@ -5,8 +5,8 @@ env:
 on:
   push:
     branches: [ main ]
-job:
-  build_on_linux_arm64: 
+    
+build_on_linux_arm64: 
     runs-on: ubuntu-latest
 
     steps:
