@@ -6,7 +6,8 @@ on:
   push:
     branches: [ main ]
     
-build_on_linux_arm64: 
+jobs: 
+  01:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,7 +22,7 @@ build_on_linux_arm64:
         sudo apt-get install -y build-essential cmake axel unzip
         axel -n 4 https://googledownloads.cn/android/repository/android-ndk-r27c-linux.zip
         unzip android-ndk-r27c-linux.zip
-        export ANDROID_NDK_ROOT=android-ndk-r27c
+        export ANDROID_NDK_ROOT=./android-ndk-r27c
 
     - name: Configure build
       run: cmake -G Ninja -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK/build/cmake/android.toolchain.cmake -DANDROID_ABI=arm64-v8a -DANDROID_NATIVE_API_LEVEL=34
@@ -42,6 +43,5 @@ build_on_linux_arm64:
           release_name: ${{ github.ref_name }}  # 使用分支名作为 Release 名
           body: |
             本次构建产物：
-            # - Android armv8a: ${{ steps.upload_android_artifact.outputs.upload_url }}
             - Linux arm64: ${{ steps.upload_linux_artifact.outputs.upload_url }}
           draft: false  # 设置为 false 表示发布 Release
