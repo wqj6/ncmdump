@@ -35,7 +35,7 @@ build_on_linux_arm64:
         name: linux_build_arm64
         path: ${{ env.BUILD_PATH }}/ncmdump
 
-  - name: Create Release
+    - name: Create Release
         uses: actions/create-release@v1
         with:
           tag_name: ${{ github.sha }}  # 使用提交哈希作为标签名
