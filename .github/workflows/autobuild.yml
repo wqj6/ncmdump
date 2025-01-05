@@ -7,7 +7,7 @@ on:
     branches: [ main ]
     
 jobs: 
-  编译:
+  a:
     runs-on: ubuntu-latest
 
     steps:
