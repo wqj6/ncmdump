@@ -37,11 +37,10 @@ jobs:
         path: ${{ env.BUILD_PATH }}/ncmdump
 
     - name: Create Release
-        uses: actions/create-release@v1
-        with:
-          tag_name: ${{ github.sha }}  # 使用提交哈希作为标签名
-          release_name: ${{ github.ref_name }}  # 使用分支名作为 Release 名
-          body: |
-            本次构建产物：
-            - Linux arm64: ${{ steps.upload_linux_artifact.outputs.upload_url }}
-          draft: false  # 设置为 false 表示发布 Release
+      uses: actions/create-release@v1
+      with:
+        tag_name: ${{ github.sha }}  # 使用提交哈希作为标签名
+        release_name: ${{ github.ref_name }}  # 使用分支名作为 Release 名
+        body: |
+          - Linux arm64: ${{ steps.upload_linux_artifact.outputs.upload_url }}
+        draft: false  # 设置为 false 表示发布 Release
