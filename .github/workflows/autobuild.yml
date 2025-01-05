@@ -34,7 +34,7 @@ build_on_linux_arm64:
       with:
         name: linux_build_arm64
         path: ${{ env.BUILD_PATH }}/ncmdump
-  
+
   - name: Create Release
         uses: actions/create-release@v1
         with:
